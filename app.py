@@ -1,8 +1,14 @@
-import streamlit as st
-import pandas as pd
+import traceback
 import joblib
-import plotly.graph_objects as go
+import streamlit as st
 
+try:
+    saved = joblib.load("bankruptcy_model.pkl")
+    st.success("Model Loaded Successfully")
+
+except Exception as e:
+    st.error(str(e))
+    st.code(traceback.format_exc())
 # ==========================================================
 # PAGE CONFIG
 # ==========================================================
